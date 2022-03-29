@@ -1,4 +1,4 @@
-;(function () {
+(function() {
   // 声明一个变量num，同时指定它的类型为number
   let num: number
 
@@ -18,11 +18,20 @@
   let b2 = false
   b2 = true
 
+  // JS中的函数是不考虑参数的类型和个数的
+  // function sum(a, b) {
+  //   return a + b
+  // }
+
+  // console.log(sum(123, 456))   // 579
+  // console.log(sum(123, "456")) // "123456"
+
   function sum(a: number, b: number): number {
     return a + b
   }
 
   let result = sum(123, 456)
   console.log(result)
-  //
+
+
 })()
