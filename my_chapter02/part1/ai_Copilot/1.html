@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+<body>
+
+<div id="app">
+
+</div>
+
+<script src="https://unpkg.com/vue@next"></script>
+<script src="https://unpkg.com/axios@0.21.4/dist/axios.min.js"></script>
+<script type="text/javascript">
+// 声明一个字符串类型的变量 a
+var a = 'hello world';
+// 声明一个数字类型的变量 b
+var b = 123;
+// 声明一个布尔类型的变量 c
+var c = true;
+// 声明一个对象类型的变量 d
+var d = {
+  name: '张三',
+  age: 18
+};
+
+// 使用axios发送请求
+axios.get('http://baidu.com').then(function(response) {
+  console.log(response);
+}).catch(function(error) {
+  console.log(error);
+});
+
+// 封装一个接口请求方法，并处理成功和失败的情况
+function request(url, method, data) {
+  return new Promise(function(resolve, reject) {
+    axios({
+      url: url,
+      method: method,
+      data: data
+    }).then(function(response) {
+      resolve(response);
+    }).catch(function(error) {
+      reject(error);
+    });
+  });
+}
+
+// 定义一个父类：People，属性有name 和 age，方法有sayHello 
+class People {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+
+  sayHello() {
+    console.log(`我叫${this.name},今年${this.age}岁`);
+  }
+}
+
+// 定义一个子类：Student，继承自People，属性有school，方法有study
+class Student extends People {
+  constructor(name, age, school) {
+    super(name, age);
+    this.school = school;
+  }
+
+  study() {
+    console.log(`我在${this.school}学习`);
+  }
+}
+
+// 定义一个子类：Teacher，继承自People，属性有school，方法有teach
+class Teacher extends People {
+  constructor(name, age, school) {
+    super(name, age);
+    this.school = school;
+  }
+
+  teach() {
+    console.log(`我在${this.school}教学`);
+  }
+}
+
+
+const { createApp, ref, reactive, computed, toRef, onBeforeMount, onMounted } = Vue
+// 创建一个 Vue3.0 应用，有一个列表
+const app = createApp({
+  data: {
+    list: [{
+      name: '张三',
+      age: 18
+    }, {
+      name: '李四',
+      age: 20
+    }]
+  },
+  methods: {
+    // 定义一个方法，这个方法可以添加一个人
+    addPeople(name, age) {
+      this.list.push({
+        name: name,
+        age: age
+      });
+    }
+  }
+})
+</script>
+</body>
+</html>
