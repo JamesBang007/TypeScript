@@ -5,6 +5,7 @@
 <title></title>
 </head>
 <body>
+<h1>AI Copilot</h1>
 
 <div id="app">
 
@@ -24,6 +25,37 @@ var d = {
   name: '张三',
   age: 18
 };
+
+
+// 选择一个png图片上传
+var upload = document.getElementById('upload');
+upload.addEventListener('change', function(e) {
+  var file = e.target.files[0];
+  var reader = new FileReader();
+  reader.readAsDataURL(file);
+  reader.onload = function(e) {
+    var img = document.createElement('img');
+    img.src = e.target.result;
+    document.body.appendChild(img);
+  }
+});
+
+
+// 用户登录
+var login = document.getElementById('login');
+login.addEventListener('click', function(e) {
+  var username = document.getElementById('username').value;
+  var password = document.getElementById('password').value;
+  axios.post('/login', {
+    username: username,
+    password: password
+  }).then(function(res) {
+    console.log(res);
+  }).catch(function(err) {
+    console.log(err);
+  });
+});
+
 
 // 使用axios发送请求
 axios.get('http://baidu.com').then(function(response) {

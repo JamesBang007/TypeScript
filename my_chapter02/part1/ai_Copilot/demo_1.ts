@@ -19,6 +19,16 @@
     return /^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/.test(idCard);
   }
 
+  // 验证邮箱
+  function isEmail(email: string) {
+    return /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,6}$/.test(email);
+  }
+
+  // 验证密码：必须包含数字和字母，且长度在6-18之间
+  function isPassword(password: string) {
+    return /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,18}$/.test(password);
+  }
+
   // 封装一个接口请求方法
   function request0(url: string, method: string, data: XMLHttpRequestBodyInit) {
     return new Promise((resolve, reject) => {
